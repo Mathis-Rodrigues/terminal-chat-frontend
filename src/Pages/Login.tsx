@@ -7,7 +7,7 @@ const LoginPage: React.FunctionComponent<LoginPageProps> = () => {
   const userProfile = useProfileStore((state) => state.userProfile);
   const buttonClicktest = () => {
     updateUserProfile({ name: 'test', age: 20 });
-    console.log(userProfile);
+    // console.log(userProfile);
   };
   return (
     <div>
