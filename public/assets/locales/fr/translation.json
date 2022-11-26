@@ -1,3 +1,9 @@
 {
-    "Login": "Connexion"
+    "login": "Connexion",
+    "french": "Français",
+    "english": "Anglais",
+    "invalidEmail": "Adresse email invalide",
+    "email": "Adresse email",
+    "password": "Mot de passe",
+    "signIn": "Se connecter"
 }

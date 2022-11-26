@@ -1,43 +1,41 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true,
-        "jest": true
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "jest": true
+  },
+  "extends": [
+    "react-app",
+    "react-app/jest",
+    "plugin:import/typescript",
+    "plugin:prettier/recommended",
+    "airbnb",
+    "airbnb-typescript"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
     },
-    "extends": [
-        "react-app",
-        "react-app/jest",
-        "plugin:import/typescript",
-        "plugin:prettier/recommended",
-        "airbnb",
-        "airbnb-typescript"
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["react", "@typescript-eslint"],
+  "rules": {
+    "react/react-in-jsx-scope": ["off"],
+    "react/function-component-definition": [
+      2,
+      {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
     ],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": "latest",
-        "sourceType": "module",
-        "project": "./tsconfig.json"
-    },
-    "plugins": [
-        "react",
-        "@typescript-eslint"
-    ],
-    "rules": {
-        "react/react-in-jsx-scope": ["off"],
-        "object-curly-newline": "off",
-        "react/function-component-definition": [
-            2,
-            {
-            "namedComponents": "arrow-function",
-            "unnamedComponents": "arrow-function"
-            }
-        ],
-        // "react/jsx-uses-react": ["off"],
-        // "react/jsx-props-no-spreading": ["warn"],
-        // "react/no-unescaped-entities": ["off"],
-        "@typescript-eslint/no-unused-vars": "warn"
-    }
+    "@typescript-eslint/no-unused-vars": "warn",
+    "react/jsx-props-no-spreading": "off"
+
+    // "react/jsx-uses-react": ["off"],
+    // "react/jsx-props-no-spreading": ["warn"],
+    // "react/no-unescaped-entities": ["off"],
+  }
 }

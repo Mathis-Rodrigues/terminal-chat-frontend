@@ -1,3 +1,9 @@
 {
-    "Login": "Login"
+    "login": "Login",
+    "french": "French",
+    "english": "English",
+    "invalidEmail": "Invalid email",
+    "email": "Email address",
+    "password": "Password",
+    "signIn": "Sign in"
 }
