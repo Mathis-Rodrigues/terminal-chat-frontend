@@ -5,5 +5,10 @@
     "invalidEmail": "Invalid email",
     "email": "Email address",
     "password": "Password",
-    "signIn": "Sign in"
+    "signIn": "Sign in",
+    "join": "Join",
+    "register": "Register",
+    "or": "or",
+    "passwordsDontMatch": "Passwords don't match",
+    "confirmPassword": "Confirm password"
 }

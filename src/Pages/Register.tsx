@@ -1,4 +1,7 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable react/jsx-props-no-spreading */
+
 import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,41 +12,33 @@ import useProfileStore from '../Contexts/ProfileContext';
 
 type FormValues = {
   email: string;
+  username: string;
   password: string;
+  passwordConfirm: string;
 };
 
-// type LoginPageProps = {};
+// interface Props {}
 
-function LoginPage() {
+function RegisterPage() {
   const { t } = useTranslation();
+  const onSubmit = (data: any) => {
+    // console.log(data);
+  };
   const [passwordShown, setPasswordShown] = useState(false);
-  // const updateUserProfile = useProfileStore((state) => state.updateUserProfile);
-  // const userProfile = useProfileStore((state) => state.userProfile);
-  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
-    watch,
+    getValues,
     formState: { errors },
   } = useForm<FormValues>({
     mode: 'onTouched',
   });
 
-  const onRegisterClick = () => {
-    navigate('/register');
-  };
+  const validatePassword = (value: any) => value === getValues('password') || t('passwordsDontMatch') as any;
 
-  const onSubmit = (data: any) => {
-    // console.log(data);
-  };
-  // const buttonClicktest = () => {
-  //   updateUserProfile({ name: 'test', age: 20 });
-  //   console.log('fdfd');
-  //   changeLanguage('en');
-  // };
   return (
     <div className="h-full w-full flex flex-col space-y-6 items-center p-6">
-      <h1 className="text-8xl font-vt323 text-primary">{t('login')}</h1>
+      <h1 className="text-8xl font-vt323 text-primary">{t('register')}</h1>
       <div className="bg-black border-2 border-primary w-full max-w-xl max-h-auto shadow-cyber p-6 pb-10">
         <div>
           <form
@@ -88,7 +83,30 @@ function LoginPage() {
                     type={passwordShown ? 'text' : 'password'}
                     name="password"
                     id="password"
-                    autoComplete="current-password"
+                    className="z-10 relative w-full px-3 py-2 border bg-black
+                text-primary rounded-md focus:outline-none focus:ring-2 focus:ring-primary border-primary text-sm pr-8"
+                  />
+                  <FontAwesomeIcon
+                    className="text-primary cursor-pointer absolute z-10 right-2 top-2 mx-auto text-xl"
+                    icon={passwordShown ? faEye : faEyeSlash}
+                    onClick={() => setPasswordShown(!passwordShown)}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="space-y-2">
+              <p className="text-xl text-primary font-vt323">{t('confirmPassword')}</p>
+              <div className="relative w-auto">
+                <div>
+                  <input
+                    {...register('password', {
+                      required: true,
+                      maxLength: 99,
+                      validate: (value) => validatePassword(value),
+                    })}
+                    type={passwordShown ? 'text' : 'password'}
+                    name="confirmPassword"
+                    id="confirmPassword"
                     className="z-10 relative w-full px-3 py-2 border bg-black
                 text-primary rounded-md focus:outline-none focus:ring-2 focus:ring-primary border-primary text-sm pr-8"
                   />
@@ -108,21 +126,6 @@ function LoginPage() {
               >
                 {t('signIn').toUpperCase()}
               </button>
-              <div className="flex h-auto w-full items-center space-x-2">
-                <div style={{ height: '2px' }} className=" bg-primary w-full" />
-                <p className="text-primary font-vt323">
-                  {t('or').toUpperCase()}
-                </p>
-                <div style={{ height: '2px' }} className="bg-primary w-full" />
-              </div>
-              <button
-                onClick={() => onRegisterClick()}
-                type="submit"
-                className="mt-10 font-vt323 shadow-cyber font-bold text-2xl text-primary border-2 border-primary  w-2/3 flex justify-center
-                py-2 px-4 rounded-md hover:bg-primary hover:text-black"
-              >
-                {t('register').toUpperCase()}
-              </button>
             </div>
           </form>
         </div>
@@ -131,4 +134,4 @@ function LoginPage() {
   );
 }
 
-export default LoginPage;
+export default RegisterPage;

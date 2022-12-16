@@ -23,32 +23,34 @@ i18n
     react: { useSuspense: false },
   });
 
-interface ApplicationProps {}
+type ApplicationProps = {};
 
-const App: React.FunctionComponent<ApplicationProps> = () => (
-  <div className="flex flex-col h-screen w-screen">
-    <div
-      style={{
-        zIndex: 1,
-        pointerEvents: 'none',
-        backgroundSize: '100% 2px',
-        backgroundImage:
-          'linear-gradient(rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.50) 50%)',
-      }}
-      className="fixed inset-0 "
-    />
-    <div>
-      <NavBar />
+function App() {
+  return (
+    <div className="flex flex-col h-screen w-screen ">
+      <div
+        style={{
+          zIndex: 1,
+          pointerEvents: 'none',
+          backgroundSize: '100% 2px',
+          backgroundImage:
+            'linear-gradient(rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.50) 50%)',
+        }}
+        className="fixed inset-0 "
+      />
+      <div>
+        <NavBar />
+      </div>
+      <div
+        style={{
+          background: 'radial-gradient(rgb(82, 60, 0), rgb(0, 0, 0))',
+        }}
+        className="flex w-full h-full"
+      >
+        <Router />
+      </div>
     </div>
-    <div
-      style={{
-        background: 'radial-gradient(rgb(82, 60, 0), rgb(0, 0, 0))',
-      }}
-      className="flex w-full h-full"
-    >
-      <Router />
-    </div>
-  </div>
-);
+  );
+}
 
 export default App;

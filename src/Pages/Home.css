@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.mostly-customized-scrollbar::-webkit-scrollbar {
+    width: 7px;
+    background-color: theme('colors.primary');
+}
+  /* Add a thumb */
+.mostly-customized-scrollbar::-webkit-scrollbar-thumb {
+    background: #000;
+}
