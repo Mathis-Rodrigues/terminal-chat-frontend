@@ -1,4 +1,3 @@
-/* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable react/jsx-props-no-spreading */
 
 import { useTranslation } from 'react-i18next';
@@ -18,7 +17,7 @@ type FormValues = {
 
 function RegisterPage() {
   const { t } = useTranslation();
-  const onSubmit = (data: any) => {
+  const onSubmit = (data: FormValues) => {
     console.log(data);
   };
   const [passwordShown, setPasswordShown] = useState(false);
@@ -32,8 +31,10 @@ function RegisterPage() {
   });
   // const password = watch('password');
 
-  const validatePassword = (value: any) =>
-    value === getValues().password || (t('passwordsDontMatch') as any);
+  const validatePassword = (value: string) => {
+    const passwordValue = getValues().password;
+    return value === passwordValue || (t('passwordsDontMatch') as any);
+  };
 
   return (
     <div className="flex h-full w-full flex-col items-center space-y-6">
