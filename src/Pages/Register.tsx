@@ -6,8 +6,6 @@ import { useForm } from 'react-hook-form';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import useProfileStore from '../Contexts/ProfileContext';
 
 type FormValues = {
   email: string;
