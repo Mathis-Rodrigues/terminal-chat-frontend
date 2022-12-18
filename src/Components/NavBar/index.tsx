@@ -11,13 +11,13 @@ function NavBar() {
     window.location.reload();
   };
   return (
-    <div className=" bg-primary w-screen h-14 bloc items-center font-vt323 flex justify-between px-4">
-      <p className="text-black md:text-6xl text-4xl">CYBERCHAT</p>
+    <div className="flex h-14 w-full items-center justify-between bg-primary px-4 font-vt323">
+      <p className="text-4xl text-black md:text-6xl">CYBERCHAT</p>
       <select
         defaultValue={localStorage.getItem('i18nextLng') as any}
         onChange={handleChange}
         id="countries"
-        className="bg-black w-36 text-xl text-primary rounded-lg p-2.5 "
+        className="text-md w-24 rounded-lg bg-black p-2.5 text-primary md:w-36 md:text-xl "
       >
         <option value="en">{t('english').toUpperCase()}</option>
         <option value="fr">{t('french').toUpperCase()}</option>

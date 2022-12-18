@@ -10,5 +10,7 @@
     "register": "Register",
     "or": "or",
     "passwordsDontMatch": "Passwords don't match",
-    "confirmPassword": "Confirm password"
+    "confirmPassword": "Confirm password",
+    "fieldRequired": "This field is required",
+    "username": "Username"
 }

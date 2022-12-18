@@ -27,7 +27,7 @@ type ApplicationProps = {};
 
 function App() {
   return (
-    <div className="flex flex-col h-screen w-screen ">
+    <div className="main-customized-scrollbar flex h-screen w-screen flex-col overflow-x-hidden">
       <div
         style={{
           zIndex: 1,
@@ -44,9 +44,11 @@ function App() {
       <div
         style={{
           background: 'radial-gradient(rgb(82, 60, 0), rgb(0, 0, 0))',
+          zIndex: -1,
         }}
-        className="flex w-full h-full"
-      >
+        className="fixed inset-0 flex h-screen w-screen"
+      />
+      <div className="p-4">
         <Router />
       </div>
     </div>

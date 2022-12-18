@@ -33,7 +33,7 @@ function ChatBox() {
       <div
         ref={viewport}
         style={{ maxHeight: 400, height: 400 }}
-        className="w-full px-2 overflow-auto mostly-customized-scrollbar "
+        className="mostly-customized-scrollbar w-full overflow-auto px-2 "
       >
         {messages.map((msg) => (
           <div className="">
@@ -42,18 +42,18 @@ function ChatBox() {
         ))}
       </div>
       <div
-        className="bg-black flex w-full items-center
-      border-t-2 border-primary"
+        className="flex w-full items-center border-t-2
+      border-primary bg-black"
       >
         <FontAwesomeIcon
-          className="text-primary z-10 mx-auto text-xl"
+          className="z-10 mx-auto text-xl text-primary"
           icon={faChevronRight}
         />
         <input
           onChange={handleChange}
           onKeyDown={handleSubmit}
-          className="px-2 py-2 w-full bg-black text-primary
-        font-vt323 text-xl focus:outline-none"
+          className="w-full bg-black px-2 py-2 font-vt323
+        text-xl text-primary focus:outline-none"
           value={message}
         />
       </div>

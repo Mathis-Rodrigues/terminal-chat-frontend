@@ -4,8 +4,6 @@ import LobbyPage from '../Pages/Lobby';
 import LoginPage from '../Pages/Login';
 import RegisterPage from '../Pages/Register';
 
-type RouterProps = {};
-
 function Router() {
   return (
     <BrowserRouter>

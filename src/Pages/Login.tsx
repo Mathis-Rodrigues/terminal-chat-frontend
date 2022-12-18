@@ -42,9 +42,9 @@ function LoginPage() {
   //   changeLanguage('en');
   // };
   return (
-    <div className="h-full w-full flex flex-col space-y-6 items-center p-6">
-      <h1 className="text-8xl font-vt323 text-primary">{t('login')}</h1>
-      <div className="bg-black border-2 border-primary w-full max-w-xl max-h-auto shadow-cyber p-6 pb-10">
+    <div className="flex h-full w-full flex-col items-center space-y-6">
+      <h1 className="font-vt323 text-8xl text-primary">{t('login')}</h1>
+      <div className="max-h-auto w-full max-w-xl border-2 border-primary bg-black p-6 pb-10 shadow-cyber">
         <div>
           <form
             onSubmit={handleSubmit(onSubmit)}
@@ -53,7 +53,7 @@ function LoginPage() {
             method="POST"
           >
             <div className="space-y-2">
-              <p className="text-xl text-primary font-vt323">{t('email')}</p>
+              <p className="font-vt323 text-xl text-primary">{t('email')}</p>
               <input
                 {...register('email', {
                   required: true,
@@ -67,17 +67,17 @@ function LoginPage() {
                 name="email"
                 id="email"
                 autoComplete="email"
-                className="z-10 relative w-full px-3 py-2 border bg-black
-                text-primary rounded-md focus:outline-none  focus:ring-2 focus:ring-primary border-primary text-sm"
+                className="relative z-10 w-full rounded-md border border-primary bg-black
+                px-3 py-2 text-sm  text-primary focus:outline-none focus:ring-2 focus:ring-primary"
               />
               {errors.email && (
-                <p className="text-red-500 text-md font-vt323">
+                <p className="text-md font-vt323 text-red-500">
                   {errors.email.message}
                 </p>
               )}
             </div>
             <div className="space-y-2">
-              <p className="text-xl text-primary font-vt323">{t('password')}</p>
+              <p className="font-vt323 text-xl text-primary">{t('password')}</p>
               <div className="relative w-auto">
                 <div>
                   <input
@@ -89,11 +89,11 @@ function LoginPage() {
                     name="password"
                     id="password"
                     autoComplete="current-password"
-                    className="z-10 relative w-full px-3 py-2 border bg-black
-                text-primary rounded-md focus:outline-none focus:ring-2 focus:ring-primary border-primary text-sm pr-8"
+                    className="relative z-10 w-full rounded-md border border-primary bg-black
+                px-3 py-2 pr-8 text-sm text-primary focus:outline-none focus:ring-2 focus:ring-primary"
                   />
                   <FontAwesomeIcon
-                    className="text-primary cursor-pointer absolute z-10 right-2 top-2 mx-auto text-xl"
+                    className="absolute right-2 top-2 z-10 mx-auto cursor-pointer text-xl text-primary"
                     icon={passwordShown ? faEye : faEyeSlash}
                     onClick={() => setPasswordShown(!passwordShown)}
                   />
@@ -103,23 +103,23 @@ function LoginPage() {
             <div className="flex flex-col items-center space-y-6">
               <button
                 type="submit"
-                className="mt-10 font-vt323 shadow-cyber font-bold text-2xl text-primary border-2 border-primary  w-2/3 flex justify-center
-                py-2 px-4 rounded-md hover:bg-primary hover:text-black"
+                className="mt-10 flex w-2/3 justify-center rounded-md border-2 border-primary py-2  px-4 font-vt323 text-2xl
+                font-bold text-primary shadow-cyber hover:bg-primary hover:text-black"
               >
                 {t('signIn').toUpperCase()}
               </button>
               <div className="flex h-auto w-full items-center space-x-2">
-                <div style={{ height: '2px' }} className=" bg-primary w-full" />
-                <p className="text-primary font-vt323">
+                <div style={{ height: '2px' }} className=" w-full bg-primary" />
+                <p className="font-vt323 text-primary">
                   {t('or').toUpperCase()}
                 </p>
-                <div style={{ height: '2px' }} className="bg-primary w-full" />
+                <div style={{ height: '2px' }} className="w-full bg-primary" />
               </div>
               <button
                 onClick={() => onRegisterClick()}
                 type="submit"
-                className="mt-10 font-vt323 shadow-cyber font-bold text-2xl text-primary border-2 border-primary  w-2/3 flex justify-center
-                py-2 px-4 rounded-md hover:bg-primary hover:text-black"
+                className="mt-10 flex w-2/3 justify-center rounded-md border-2 border-primary py-2  px-4 font-vt323 text-2xl
+                font-bold text-primary shadow-cyber hover:bg-primary hover:text-black"
               >
                 {t('register').toUpperCase()}
               </button>

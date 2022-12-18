@@ -12,23 +12,23 @@ function HomePage() {
     navigate('/lobby');
   };
   return (
-    <div className="h-full w-full flex flex-col items-center p-6">
-      <div className="bg-black border-2 mostly-customized-scrollbar border-primary w-full max-w-xl h-2/3 lg:h-1/2 shadow-cyber overflow-auto">
+    <div className="flex h-full w-full flex-col items-center">
+      <div className="mostly-customized-scrollbar h-2/3 w-full max-w-xl overflow-auto border-2 border-primary bg-black shadow-cyber lg:h-1/2">
         {[...Array(n)].map((_, i) => (
           <div
             onClick={() => onLobbyClick()}
             onKeyDown={() => {}}
             tabIndex={i + 1}
             role="button"
-            className="flex flex-col justify-between p-1 h-20 w-full
-          border-primary border-2 shadow-cyber text-primary hover:bg-primary hover:text-black cursor-pointer"
+            className="flex h-20 w-full cursor-pointer flex-col justify-between
+          border-2 border-primary p-1 text-primary shadow-cyber hover:bg-primary hover:text-black"
           >
-            <p className="text-xl font-vt323">
+            <p className="font-vt323 text-xl">
               Lobby
               {i}
             </p>
             <div className="flex justify-end">
-              <p className=" text-xl font-vt323">
+              <p className=" font-vt323 text-xl">
                 {`${t('join').toUpperCase()} >>>`}
               </p>
             </div>

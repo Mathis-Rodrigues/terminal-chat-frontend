@@ -10,5 +10,7 @@
     "register": "S'inscrire",
     "or": "ou",
     "passwordsDontMatch": "Les mots de passe ne correspondent pas",
-    "confirmPassword": "Confirmer le mot de passe"
+    "confirmPassword": "Confirmer le mot de passe",
+    "fieldRequired": "Ce champ est requis",
+    "username": "Nom d'utilisateur"
 }

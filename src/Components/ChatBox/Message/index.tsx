@@ -7,7 +7,7 @@ function Message(props: MessageProps) {
   const { message, sender } = props;
   return (
     <div style={{}}>
-      <p className="text-primary text-xl font-vt323">{`${sender}: ${message}`}</p>
+      <p className="font-vt323 text-xl text-primary">{`${sender}: ${message}`}</p>
     </div>
   );
 }
