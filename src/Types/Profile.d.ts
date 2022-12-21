@@ -1,4 +1,5 @@
 export type Profile = {
   name: string;
-  age: number;
+  mail: string;
+  bio: string;
 };

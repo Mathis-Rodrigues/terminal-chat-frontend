@@ -9,7 +9,8 @@ export interface ProfileState {
 const useProfileStore = create<ProfileState>((set) => ({
   userProfile: {
     name: '',
-    age: 0,
+    bio: '',
+    mail: '',
   },
   updateUserProfile: (profile: Profile) => set({ userProfile: profile }),
 }));

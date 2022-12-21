@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
+import useProfileStore from '../Contexts/ProfileContext';
 import './Home.css';
 
 // type HomePageProps = {};
@@ -8,12 +9,14 @@ function HomePage() {
   const { t } = useTranslation();
   const n = 10;
   const navigate = useNavigate();
+  const userProfile = useProfileStore((state) => state.userProfile);
   const onLobbyClick = () => {
     navigate('/lobby');
   };
   return (
     <div className="flex h-full w-full flex-col items-center">
       <div className="mostly-customized-scrollbar h-2/3 w-full max-w-xl overflow-auto border-2 border-primary bg-black shadow-cyber lg:h-1/2">
+        <p className="text-lg text-primary">{userProfile.name}</p>
         {[...Array(n)].map((_, i) => (
           <div
             onClick={() => onLobbyClick()}

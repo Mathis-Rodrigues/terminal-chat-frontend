@@ -5,10 +5,12 @@ import { useForm } from 'react-hook-form';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import UsersService from '../Services/Users';
 
 type FormValues = {
-  email: string;
-  username: string;
+  mail: string;
+  name: string;
   password: string;
   passwordConfirm: string;
 };
@@ -17,19 +19,25 @@ type FormValues = {
 
 function RegisterPage() {
   const { t } = useTranslation();
-  const onSubmit = (data: FormValues) => {
-    console.log(data);
-  };
   const [passwordShown, setPasswordShown] = useState(false);
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     getValues,
     formState: { errors },
   } = useForm<FormValues>({
-    mode: 'onTouched',
+    mode: 'onSubmit',
   });
-  // const password = watch('password');
+
+  const onSubmit = (data: FormValues) => {
+    const { passwordConfirm, ...rest } = data;
+    const temp = { ...rest, bio: 'Hello' };
+    UsersService.createUser(temp).then((res) => {
+      localStorage.setItem('token', res.data.token);
+      navigate('/home');
+    });
+  };
 
   const validatePassword = (value: string) => {
     const passwordValue = getValues().password;
@@ -51,7 +59,7 @@ function RegisterPage() {
           <div className="">
             <p className="font-vt323 text-xl text-primary ">{t('email')}</p>
             <input
-              {...register('email', {
+              {...register('mail', {
                 required: {
                   value: true,
                   message: t('fieldRequired'),
@@ -63,22 +71,22 @@ function RegisterPage() {
                 },
               })}
               type="text"
-              name="email"
-              id="email"
+              name="mail"
+              id="mail"
               autoComplete="email"
               className="relative z-10 w-full rounded-md border border-primary bg-black
                 px-3 py-2 text-sm  text-primary focus:outline-none focus:ring-2 focus:ring-primary"
             />
-            {errors.email && (
+            {errors.mail && (
               <p className="text-md font-vt323 text-red-500">
-                {errors.email.message}
+                {errors.mail.message}
               </p>
             )}
           </div>
           <div className="">
             <p className="font-vt323 text-xl text-primary">{t('username')}</p>
             <input
-              {...register('username', {
+              {...register('name', {
                 required: {
                   value: true,
                   message: t('fieldRequired'),
@@ -86,15 +94,15 @@ function RegisterPage() {
                 maxLength: 99,
               })}
               type="text"
-              name="username"
-              id="username"
+              name="name"
+              id="name"
               autoComplete="username"
               className="relative z-10 w-full rounded-md border border-primary bg-black
                 px-3 py-2 text-sm  text-primary focus:outline-none focus:ring-2 focus:ring-primary"
             />
-            {errors.username && (
+            {errors.name && (
               <p className="text-md font-vt323 text-red-500">
-                {errors.username.message}
+                {errors.name.message}
               </p>
             )}
           </div>

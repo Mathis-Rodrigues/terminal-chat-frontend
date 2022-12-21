@@ -12,5 +12,6 @@
     "passwordsDontMatch": "Passwords don't match",
     "confirmPassword": "Confirm password",
     "fieldRequired": "This field is required",
-    "username": "Username"
+    "username": "Username",
+    "loginServerError": "Password or email is incorrect"
 }

@@ -12,5 +12,6 @@
     "passwordsDontMatch": "Les mots de passe ne correspondent pas",
     "confirmPassword": "Confirmer le mot de passe",
     "fieldRequired": "Ce champ est requis",
-    "username": "Nom d'utilisateur"
+    "username": "Nom d'utilisateur",
+    "loginServerError": "Mot de passe ou email invalide"
 }

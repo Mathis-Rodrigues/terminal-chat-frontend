@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { changeLanguage } from 'i18next';
 import { useTranslation } from 'react-i18next';
 
@@ -6,13 +7,17 @@ import { useTranslation } from 'react-i18next';
 function NavBar() {
   const { t } = useTranslation();
 
+  const goToHome = () => {
+    window.location.href = '/';
+  };
+
   const handleChange = (event: any) => {
     changeLanguage(event.target.value);
     window.location.reload();
   };
   return (
     <div className="flex h-14 w-full items-center justify-between bg-primary px-4 font-vt323">
-      <p className="text-4xl text-black md:text-6xl">CYBERCHAT</p>
+      <p onClick={goToHome} onKeyDown={goToHome} className="cursor-pointer text-4xl text-black md:text-6xl">CYBERCHAT</p>
       <select
         defaultValue={localStorage.getItem('i18nextLng') as any}
         onChange={handleChange}
