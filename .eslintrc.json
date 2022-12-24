@@ -25,6 +25,7 @@
   "rules": {
     "react/react-in-jsx-scope": ["off"],
     "@typescript-eslint/no-unused-vars": "warn",
-    "prettier/prettier": ["off"]
+    "prettier/prettier": ["off"],
+    "no-underscore-dangle": "off"
   }
 }

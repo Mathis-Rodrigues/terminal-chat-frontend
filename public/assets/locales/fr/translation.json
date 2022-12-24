@@ -13,5 +13,10 @@
     "confirmPassword": "Confirmer le mot de passe",
     "fieldRequired": "Ce champ est requis",
     "username": "Nom d'utilisateur",
-    "loginServerError": "Mot de passe ou email invalide"
+    "loginServerError": "Mot de passe ou email invalide",
+    "reload": "Recharger",
+    "noRooms": "Aucune salle disponible",
+    "createRoom": "Créer une salle",
+    "roomName": "Nom de la salle",
+    "roomSubject": "Sujet de la salle"
 }

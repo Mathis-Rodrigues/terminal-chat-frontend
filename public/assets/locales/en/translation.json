@@ -13,5 +13,10 @@
     "confirmPassword": "Confirm password",
     "fieldRequired": "This field is required",
     "username": "Username",
-    "loginServerError": "Password or email is incorrect"
+    "loginServerError": "Password or email is incorrect",
+    "reload": "Reload",
+    "noRooms": "No rooms",
+    "createRoom": "Create room",
+    "roomName": "Room name",
+    "roomSubject": "Room subject"
 }
