@@ -7,6 +7,7 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import UsersService from '../Services/Users';
+import axiosInstance from '../Services/axios';
 
 type FormValues = {
   mail: string;
@@ -33,6 +34,7 @@ function RegisterPage() {
     const temp = { ...rest, bio: 'Hello' };
     UsersService.createUser(temp).then((res) => {
       localStorage.setItem('token', res.token);
+      axiosInstance.defaults.headers.common.Authorization = `Bearer ${res.token}`;
       navigate('/home');
     });
   };

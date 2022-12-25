@@ -10,6 +10,7 @@ const Rooms = {
   },
   createRoom: async (room: CreatedRoom) => {
     const response = await axiosInstance.post('/rooms', room);
+    console.log(response);
     return response.data as Room;
   },
 };

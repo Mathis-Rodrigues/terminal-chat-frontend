@@ -64,10 +64,8 @@ function HomePage() {
             className="flex h-20 w-full cursor-pointer flex-col justify-between
           border-2 border-primary p-1 text-primary shadow-cyber hover:bg-primary hover:text-black"
           >
-            <p className="font-vt323 text-xl">
-              Lobby
-              {i}
-            </p>
+            <p className="font-vt323 text-xl">{room.name}</p>
+            <p className="font-vt323 text-xl">{room.subject}</p>
             <div className="flex justify-end">
               <p className=" font-vt323 text-xl">
                 {`${t('join').toUpperCase()} >>>`}

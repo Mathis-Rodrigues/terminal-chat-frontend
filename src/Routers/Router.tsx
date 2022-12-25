@@ -14,7 +14,7 @@ function Router() {
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/home" element={<HomePage />} />
-        <Route path="/lobby" element={<LobbyPage />} />
+        <Route path="/lobby/:id" element={<LobbyPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/create-lobby" element={<CreateLobby />} />
       </Routes>

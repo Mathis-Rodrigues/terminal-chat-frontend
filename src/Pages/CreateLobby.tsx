@@ -29,7 +29,7 @@ function CreateLobby() {
 
   const createRoomMutation = useMutation(Rooms.createRoom, {
     onSuccess: (data) => {
-      navigate('/home');
+      navigate(`/lobby/${data._id}?password=${data.password}`);
     },
   });
 

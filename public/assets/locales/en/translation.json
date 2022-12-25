@@ -18,5 +18,6 @@
     "noRooms": "No rooms",
     "createRoom": "Create room",
     "roomName": "Room name",
-    "roomSubject": "Room subject"
+    "roomSubject": "Room subject",
+    "connexionHappenning": "Connexion is happening"
 }
