@@ -14,7 +14,7 @@ function LobbyPage() {
 
   const socket = useMemo(() => {
     const password = query.get('password');
-    const s = io('ws://127.0.0.1:3000', {
+    const s = io(process.env.REACT_APP_SOCKETS_URL || '', {
       auth: {
         token: localStorage.getItem('token'),
       },
@@ -23,11 +23,7 @@ function LobbyPage() {
         password,
       },
     });
-    s.on('connect', () => {
-      console.log('Connected to the server');
-    });
     s.on('join_ok', () => {
-      console.log('Joining the room');
       setConnected(true);
     });
     s.on('message', (m) => {
