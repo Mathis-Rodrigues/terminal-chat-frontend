@@ -4,4 +4,5 @@ export interface Room {
   password: string;
   subject: string;
   participants: any[];
+  protected?: boolean;
 }

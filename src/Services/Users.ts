@@ -9,6 +9,10 @@ const Users = {
     const response = await axiosInstance.post('/login/', data);
     return response.data;
   },
+  getUser: async (id: string) => {
+    const response = await axiosInstance.get(`/users/${id}`);
+    return response.data as any;
+  },
 };
 
 export default Users;

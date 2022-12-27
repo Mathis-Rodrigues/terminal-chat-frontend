@@ -19,5 +19,6 @@
     "createRoom": "Create room",
     "roomName": "Room name",
     "roomSubject": "Room subject",
-    "connexionHappenning": "Connexion is happening"
+    "connexionHappenning": "Connexion is happening",
+    "wrongPassword": "Wrong password"
 }

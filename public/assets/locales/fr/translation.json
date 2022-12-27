@@ -19,5 +19,6 @@
     "createRoom": "Créer une salle",
     "roomName": "Nom de la salle",
     "roomSubject": "Sujet de la salle",
-    "connexionHappenning": "Connexion en cours"
+    "connexionHappenning": "Connexion en cours",
+    "wrongPassword": "Mot de passe incorrect"
 }

@@ -1,13 +1,22 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { useState, useRef, useEffect } from 'react';
+import { Socket } from 'socket.io-client';
+import { Message as MessageType } from '../../Types/Message';
 import Message from './Message';
 import './style.css';
+import useProfileStore from '../../Contexts/ProfileContext';
 
-function ChatBox() {
+interface ChatBoxProps {
+  messages: MessageType[];
+  socket: Socket;
+  id: string | undefined;
+}
+
+function ChatBox({ messages, socket, id }: ChatBoxProps) {
   const [message, setMessage] = useState<string>('');
-  const [messages, setMessages] = useState<string[]>([]);
   const viewport = useRef<HTMLDivElement>(null);
+  const userProfile = useProfileStore((state) => state.userProfile);
 
   useEffect(() => {
     if (viewport.current) {
@@ -19,7 +28,11 @@ function ChatBox() {
   }, [messages]);
   const handleSubmit = (e: any) => {
     if (e.key === 'Enter') {
-      setMessages([...messages, message]);
+      socket.emit('message', {
+        message,
+        user: userProfile._id,
+        to: id,
+      });
       setMessage('');
     }
   };
@@ -37,7 +50,7 @@ function ChatBox() {
       >
         {messages.map((msg) => (
           <div className="">
-            <Message key={msg} message={msg} sender="Mathis" />
+            <Message message={msg} />
           </div>
         ))}
       </div>

@@ -11,6 +11,8 @@ const useProfileStore = create<ProfileState>((set) => ({
     name: '',
     bio: '',
     mail: '',
+    _id: '',
+    password: '',
   },
   updateUserProfile: (profile: Profile) => set({ userProfile: profile }),
 }));

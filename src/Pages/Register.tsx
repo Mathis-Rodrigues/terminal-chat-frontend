@@ -8,6 +8,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import UsersService from '../Services/Users';
 import axiosInstance from '../Services/axios';
+import useProfileStore from '../Contexts/ProfileContext';
 
 type FormValues = {
   mail: string;
@@ -20,6 +21,7 @@ function RegisterPage() {
   const { t } = useTranslation();
   const [passwordShown, setPasswordShown] = useState(false);
   const navigate = useNavigate();
+  const updateUserProfile = useProfileStore((state) => state.updateUserProfile);
   const {
     register,
     handleSubmit,
@@ -35,6 +37,7 @@ function RegisterPage() {
     UsersService.createUser(temp).then((res) => {
       localStorage.setItem('token', res.token);
       axiosInstance.defaults.headers.common.Authorization = `Bearer ${res.token}`;
+      updateUserProfile({ ...res });
       navigate('/home');
     });
   };

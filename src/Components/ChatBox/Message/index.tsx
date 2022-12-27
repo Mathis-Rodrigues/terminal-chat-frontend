@@ -1,13 +1,24 @@
+import { useQuery } from '@tanstack/react-query';
+import Users from '../../../Services/Users';
+import { Message as MessageType } from '../../../Types/Message';
+
 interface MessageProps {
-  message: string;
-  sender: string;
+  message: MessageType;
 }
 
-function Message(props: MessageProps) {
-  const { message, sender } = props;
+function Message({ message }: MessageProps) {
+  const { data: user } = useQuery({
+    queryKey: [`user-${message.user}`],
+    queryFn: () => Users.getUser(message.user),
+    enabled: !!message.user,
+  });
+
   return (
     <div style={{}}>
-      <p className="font-vt323 text-xl text-primary">{`${sender}: ${message}`}</p>
+      <p className="font-vt323 text-xl text-primary">
+        {message.customSender === 'room' ? '' : `${user?.name} - `}
+        {`${message.message}`}
+      </p>
     </div>
   );
 }
