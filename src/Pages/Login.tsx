@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useProfileStore from '../Contexts/ProfileContext';
 import UsersService from '../Services/Users';
@@ -41,11 +41,18 @@ function LoginPage() {
       localStorage.setItem('token', res.token);
       // updateUserProfile()
       navigate('/home');
-    }).catch((error) => {
+    }).catch(() => {
       setServerError(t('loginServerError').toString());
     });
     setServerError('');
   };
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      navigate('/home');
+    }
+  }, [navigate]);
 
   return (
     <div className="flex h-full w-full flex-col items-center space-y-6">

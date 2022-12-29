@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import UsersService from '../Services/Users';
 import axiosInstance from '../Services/axios';
@@ -46,6 +46,13 @@ function RegisterPage() {
     const passwordValue = getValues().password;
     return value === passwordValue || (t('passwordsDontMatch') as any);
   };
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      navigate('/home');
+    }
+  }, [navigate]);
 
   return (
     <div className="flex h-full w-full flex-col items-center space-y-6">
