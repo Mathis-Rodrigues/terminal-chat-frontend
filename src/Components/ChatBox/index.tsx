@@ -27,7 +27,7 @@ function ChatBox({ messages, socket, id }: ChatBoxProps) {
     }
   }, [messages]);
   const handleSubmit = (e: any) => {
-    if (e.key === 'Enter') {
+    if (e.key === 'Enter' && message !== '') {
       socket.emit('message', {
         message,
         user: userProfile._id,
