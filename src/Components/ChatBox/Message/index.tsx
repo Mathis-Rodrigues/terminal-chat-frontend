@@ -11,8 +11,8 @@ function Message({ message }: MessageProps) {
   const { t } = useTranslation();
   const { data: user } = useQuery({
     queryKey: [`user-${message.user}`],
-    queryFn: () => Users.getUser(message.user._id),
-    enabled: !!message.user?._id,
+    queryFn: () => Users.getUser(message.user._id || (message.user as any as string)),
+    enabled: message.user?._id !== undefined || message.user !== undefined,
   });
 
   return (
