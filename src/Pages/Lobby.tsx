@@ -48,7 +48,7 @@ function LobbyPage() {
   useEffect(() => {
     if (connected && id) {
       Messages.getMessages(id).then((res) => {
-        setMessages(res);
+        setMessages((prev) => [...prev, ...res]);
       });
     }
   }, [connected, id]);
