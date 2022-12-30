@@ -5,12 +5,15 @@ import { useTranslation } from 'react-i18next';
 import ChatBox from '../Components/ChatBox';
 import { Message } from '../Types/Message';
 import { Profile } from '../Types/Profile';
+import Messages from '../Services/Messages';
 
 function LobbyPage() {
   const [connected, setConnected] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [socket, setSocket] = useState<Socket | null>(null);
-  const [participants, setParticipants] = useState<{ user: Profile; socketId: string }[]>([]);
+  const [participants, setParticipants] = useState<
+  { user: Profile; socketId: string }[]
+  >([]);
   const { t } = useTranslation();
   const { id } = useParams<{ id: string }>();
   const query = useMemo(() => new URLSearchParams(window.location.search), []);
@@ -42,18 +45,28 @@ function LobbyPage() {
     };
   }, [id, query]);
 
+  useEffect(() => {
+    if (connected && id) {
+      Messages.getMessages(id).then((res) => {
+        setMessages(res);
+      });
+    }
+  }, [connected, id]);
+
   if (!socket) {
     return <p>{t('connexionHappenning')}</p>;
   }
   return (
     <div className="flex h-full w-full flex-row  justify-center">
-      <div className="border-2 border-primary bg-black p-2 h-full">
-        <p className="md:text-2xl text-primary font-vt323 italic text-center">{t('lobbyMembers')}</p>
+      <div className="h-full border-2 border-primary bg-black p-2">
+        <p className="text-center font-vt323 italic text-primary md:text-2xl">
+          {t('lobbyMembers')}
+        </p>
         {participants.map((p) => (
-          <p className="md:text-xl text-sm text-primary text-ellipsis overflow-hidden whitespace-nowrap">
+          <p className="overflow-hidden text-ellipsis whitespace-nowrap text-sm text-primary md:text-xl">
             -
             {' '}
-            {(p.user.name.slice(0, 12) + (p.user.name.length > 12 ? '...' : ''))}
+            {p.user.name.slice(0, 12) + (p.user.name.length > 12 ? '...' : '')}
           </p>
         ))}
       </div>
