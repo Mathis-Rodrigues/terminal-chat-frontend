@@ -12,7 +12,7 @@ function Message({ message }: MessageProps) {
   const { data: user } = useQuery({
     queryKey: [`user-${message.user}`],
     queryFn: () => Users.getUser(message.user._id),
-    enabled: !!message.user._id,
+    enabled: !!message.user?._id,
   });
 
   return (
