@@ -1,3 +1,5 @@
+import { Profile } from './Profile';
+
 interface JoinEvent {
   event?: 'joined';
   joinedName: string;
@@ -9,7 +11,7 @@ interface LeaveEvent {
 }
 
 export type Message = {
-  user: string;
+  user: Profile;
   message: string;
   to: string;
   privateMessage?: boolean;
