@@ -3,13 +3,12 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import useProfileStore from '../Contexts/ProfileContext';
+import useToken from '../Hooks/useToken';
 import Rooms from '../Services/Rooms';
-import { Room } from '../Types/Room';
 import './Home.css';
 
-// type HomePageProps = {};
-
 function HomePage() {
+  useToken();
   const { t } = useTranslation();
   const navigate = useNavigate();
   const userProfile = useProfileStore((state) => state.userProfile);
@@ -23,7 +22,7 @@ function HomePage() {
     isLoading,
     isError,
     refetch,
-  } = useQuery({ queryKey: ['room'], queryFn: () => Rooms.getRooms() });
+  } = useQuery({ queryKey: ['rhumm'], queryFn: () => Rooms.getRooms() });
 
   const onCreateRoomClick = () => navigate('/create-lobby');
 
