@@ -71,22 +71,18 @@ function CreateLobby() {
               {t('roomSubject')}
             </p>
             <input
-              {...register('name', {
-                required: {
-                  value: true,
-                  message: t('fieldRequired'),
-                },
+              {...register('subject', {
                 maxLength: 99,
               })}
               type="text"
-              name="name"
-              id="name"
+              name="subject"
+              id="subject"
               className="relative z-10 w-full rounded-md border border-primary bg-black
                 px-3 py-2 text-sm  text-primary focus:outline-none focus:ring-2 focus:ring-primary"
             />
-            {errors.name && (
+            {errors.subject && (
               <p className="text-md font-vt323 text-red-500">
-                {errors.name.message}
+                {errors.subject.message}
               </p>
             )}
           </div>
