@@ -11,7 +11,6 @@ import './Home.css';
 
 function HomePage() {
   const { t } = useTranslation();
-  const n = 10;
   const navigate = useNavigate();
   const userProfile = useProfileStore((state) => state.userProfile);
 
@@ -40,11 +39,16 @@ function HomePage() {
   const onPasswordSubmit = () => {
     if (passwordInput === '') return;
     const room = rooms?.find((r) => r._id === selectedRoomId);
-    if (room?.password === passwordInput) {
-      navigate(`/lobby/${selectedRoomId}?password=${passwordInput}`);
-    } else {
+    if (room === undefined) return;
+    Rooms.checkRoomPassword(room?._id, passwordInput).then((res) => {
+      console.log(res);
+      if (res.success) {
+        navigate(`/lobby/${selectedRoomId}?password=${passwordInput}`);
+      }
+    }).catch(() => {
+      console.log('dfddf');
       setPasswordInput(t('wrongPassword') || '');
-    }
+    });
   };
 
   if (isLoading) {

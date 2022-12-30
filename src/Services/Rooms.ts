@@ -13,6 +13,10 @@ const Rooms = {
     console.log(response);
     return response.data as Room;
   },
+  checkRoomPassword: async (id: string, password: string) => {
+    const response = await axiosInstance.post(`/rooms/${id}/password?password=${password}`);
+    return response.data;
+  },
 };
 
 export default Rooms;
