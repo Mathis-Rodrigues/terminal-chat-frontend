@@ -15,6 +15,13 @@ function Message({ message }: MessageProps) {
     enabled: message.user?._id !== undefined || message.user !== undefined,
   });
 
+  const formatTime = (time: string) => {
+    const date = new Date(time);
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    return `${hours}:${minutes}`;
+  };
+
   return (
     <div style={{}}>
       {message.event === 'joined' && (
@@ -29,8 +36,8 @@ function Message({ message }: MessageProps) {
       )}
       {message.event === undefined && (
         <p className="font-vt323 text-xl text-primary">
-          {message.time ? `[${message.time}] - ` : ''}
-          {message.customSender === 'room' ? '' : `${user?.name || 'user'} - `}
+          {message.time ? `[${formatTime(message.time)}] ` : ''}
+          {message.customSender === 'room' ? '' : `${user?.name || 'user'}:  `}
           {`${message.message}`}
         </p>
       )}
