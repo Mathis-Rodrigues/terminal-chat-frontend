@@ -3,13 +3,12 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import useProfileStore from '../Contexts/ProfileContext';
+import useToken from '../Hooks/useToken';
 import Rooms from '../Services/Rooms';
-import { Room } from '../Types/Room';
 import './Home.css';
 
-// type HomePageProps = {};
-
 function HomePage() {
+  useToken();
   const { t } = useTranslation();
   const n = 10;
   const navigate = useNavigate();
@@ -24,7 +23,7 @@ function HomePage() {
     isLoading,
     isError,
     refetch,
-  } = useQuery({ queryKey: ['room'], queryFn: () => Rooms.getRooms() });
+  } = useQuery({ queryKey: ['rhumm'], queryFn: () => Rooms.getRooms() });
 
   const onCreateRoomClick = () => navigate('/create-lobby');
 
@@ -40,6 +39,7 @@ function HomePage() {
   const onPasswordSubmit = () => {
     if (passwordInput === '') return;
     const room = rooms?.find((r) => r._id === selectedRoomId);
+    // Call api rooms/:id/password?password=mdp
     if (room?.password === passwordInput) {
       navigate(`/lobby/${selectedRoomId}?password=${passwordInput}`);
     } else {
