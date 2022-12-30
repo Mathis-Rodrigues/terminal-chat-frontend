@@ -47,7 +47,17 @@ function LobbyPage() {
     return <p>{t('connexionHappenning')}</p>;
   }
   return (
-    <div className="flex h-full w-full flex-col items-center">
+    <div className="flex h-full w-full flex-row  justify-center">
+      <div className="border-2 border-primary bg-black p-2 h-full">
+        <p className="md:text-2xl text-primary font-vt323 italic text-center">{t('Membres du lobby')}</p>
+        {participants.map((p) => (
+          <p className="md:text-xl text-sm text-primary text-ellipsis overflow-hidden whitespace-nowrap">
+            -
+            {' '}
+            {(p.user.name.slice(0, 12) + (p.user.name.length > 12 ? '...' : ''))}
+          </p>
+        ))}
+      </div>
       <div className="h-auto w-full max-w-xl border-2 border-primary bg-black shadow-cyber">
         <ChatBox messages={messages} socket={socket} id={id} />
       </div>
