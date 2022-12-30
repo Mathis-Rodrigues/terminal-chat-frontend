@@ -51,7 +51,7 @@ function HomePage() {
   if (isLoading) {
     return (
       <div className="flex h-full w-full flex-col items-center">
-        <p className="text-lg text-primary">Loading</p>
+        <p className="text-lg text-primary">{t('loading')}</p>
       </div>
     );
   }

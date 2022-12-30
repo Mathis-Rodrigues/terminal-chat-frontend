@@ -22,5 +22,6 @@
     "connexionHappenning": "Connexion en cours",
     "wrongPassword": "Mot de passe incorrect",
     "userLeft": "a quitté la salle",
-    "userJoined": "a rejoint la salle"
+    "userJoined": "a rejoint la salle",
+    "loading": "Chargement"
 }

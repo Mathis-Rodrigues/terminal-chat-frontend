@@ -22,5 +22,6 @@
     "connexionHappenning": "Connexion is happening",
     "wrongPassword": "Wrong password",
     "userLeft": "has left the room",
-    "userJoined": "has joined the room"
+    "userJoined": "has joined the room",
+    "loading": "Loading"
 }
