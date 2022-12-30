@@ -29,7 +29,8 @@ function Message({ message }: MessageProps) {
       )}
       {message.event === undefined && (
         <p className="font-vt323 text-xl text-primary">
-          {message.customSender === 'room' ? '' : `${user?.name} - `}
+          {message.time ? `[${message.time}] - ` : ''}
+          {message.customSender === 'room' ? '' : `${user?.name || 'user'} - `}
           {`${message.message}`}
         </p>
       )}
