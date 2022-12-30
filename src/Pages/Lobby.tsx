@@ -33,7 +33,6 @@ function LobbyPage() {
       setMessages((prev) => [...prev, m]);
     });
     s.on('participants', (p) => {
-      console.log(p);
       setParticipants(p);
     });
     setSocket(s);

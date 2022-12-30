@@ -31,7 +31,7 @@ function NavBar() {
         onClick={goToHome}
         className="cursor-pointer text-4xl text-black md:text-6xl"
       >
-        CYBERCHAT
+        TERMINAL CHAT
       </button>
       <div className="flex items-center gap-x-4">
         <select

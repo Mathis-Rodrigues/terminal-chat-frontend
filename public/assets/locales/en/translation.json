@@ -21,5 +21,8 @@
     "roomSubject": "Room subject",
     "connexionHappenning": "Connexion is happening",
     "wrongPassword": "Wrong password",
-    "lobbyMembers": "Lobby members"
+    "lobbyMembers": "Lobby members",
+    "userLeft": "has left the room",
+    "userJoined": "has joined the room",
+    "loading": "Loading"
 }

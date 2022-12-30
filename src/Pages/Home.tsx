@@ -2,7 +2,6 @@ import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import useProfileStore from '../Contexts/ProfileContext';
 import useToken from '../Hooks/useToken';
 import Rooms from '../Services/Rooms';
 import './Home.css';
@@ -11,7 +10,6 @@ function HomePage() {
   useToken();
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const userProfile = useProfileStore((state) => state.userProfile);
 
   const [passwordInput, setPasswordInput] = useState('');
   const [enableInput, setEnableInput] = useState(false);
@@ -39,21 +37,21 @@ function HomePage() {
     if (passwordInput === '') return;
     const room = rooms?.find((r) => r._id === selectedRoomId);
     if (room === undefined) return;
-    Rooms.checkRoomPassword(room?._id, passwordInput).then((res) => {
-      console.log(res);
-      if (res.success) {
-        navigate(`/lobby/${selectedRoomId}?password=${passwordInput}`);
-      }
-    }).catch(() => {
-      console.log('dfddf');
-      setPasswordInput(t('wrongPassword') || '');
-    });
+    Rooms.checkRoomPassword(room?._id, passwordInput)
+      .then((res) => {
+        if (res.success) {
+          navigate(`/lobby/${selectedRoomId}?password=${passwordInput}`);
+        }
+      })
+      .catch(() => {
+        setPasswordInput(t('wrongPassword') || '');
+      });
   };
 
   if (isLoading) {
     return (
       <div className="flex h-full w-full flex-col items-center">
-        <p className="text-lg text-primary">Loading</p>
+        <p className="text-lg text-primary">{t('loading')}</p>
       </div>
     );
   }

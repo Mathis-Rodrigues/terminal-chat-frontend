@@ -21,5 +21,8 @@
     "roomSubject": "Sujet de la salle",
     "connexionHappenning": "Connexion en cours",
     "wrongPassword": "Mot de passe incorrect",
-    "lobbyMembers": "Membres du lobby"
+    "lobbyMembers": "Membres du lobby",
+    "userLeft": "a quitté la salle",
+    "userJoined": "a rejoint la salle",
+    "loading": "Chargement"
 }
