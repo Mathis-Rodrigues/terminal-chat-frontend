@@ -20,5 +20,7 @@
     "roomName": "Room name",
     "roomSubject": "Room subject",
     "connexionHappenning": "Connexion is happening",
-    "wrongPassword": "Wrong password"
+    "wrongPassword": "Wrong password",
+    "userLeft": "has left the room",
+    "userJoined": "has joined the room"
 }
