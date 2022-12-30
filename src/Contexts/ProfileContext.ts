@@ -8,18 +8,16 @@ export interface ProfileState {
 }
 
 const useProfileStore = create<ProfileState>()(
-  persist(
-    (set) => ({
-      userProfile: {
-        name: '',
-        bio: '',
-        mail: '',
-        _id: '',
-        password: '',
-      },
-      updateUserProfile: (profile: Profile) => set({ userProfile: profile }),
-    }),
-  ),
+  persist((set) => ({
+    userProfile: {
+      name: '',
+      bio: '',
+      mail: '',
+      _id: '',
+      password: '',
+    },
+    updateUserProfile: (profile: Profile) => set({ userProfile: profile }),
+  })),
 );
 
 export default useProfileStore;

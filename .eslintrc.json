@@ -24,9 +24,7 @@
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
     "react/react-in-jsx-scope": ["off"],
-    "@typescript-eslint/no-unused-vars": "warn",
     "prettier/prettier": ["off"],
-    "no-underscore-dangle": "off",
-    "linebreak-style": ["off"]
+    "no-underscore-dangle": "off"
   }
 }

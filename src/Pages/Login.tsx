@@ -36,14 +36,16 @@ function LoginPage() {
   };
 
   const onSubmit = (data: FormValues) => {
-    UsersService.login(data).then((res) => {
-      updateUserProfile(res as Profile);
-      localStorage.setItem('token', res.token);
-      // updateUserProfile()
-      navigate('/home');
-    }).catch(() => {
-      setServerError(t('loginServerError').toString());
-    });
+    UsersService.login(data)
+      .then((res) => {
+        updateUserProfile(res as Profile);
+        localStorage.setItem('token', res.token);
+        // updateUserProfile()
+        navigate('/home');
+      })
+      .catch(() => {
+        setServerError(t('loginServerError').toString());
+      });
     setServerError('');
   };
 
@@ -57,11 +59,11 @@ function LoginPage() {
   return (
     <div className="flex h-full w-full flex-col items-center space-y-6">
       <h1 className="font-vt323 text-8xl text-primary">{t('login')}</h1>
-      <div className="flex flex-col  max-h-auto w-full max-w-xl border-2 border-primary bg-black p-6 pb-10 shadow-cyber">
+      <div className="max-h-auto flex  w-full max-w-xl flex-col border-2 border-primary bg-black p-6 pb-10 shadow-cyber">
         {serverError && (
-        <p className="items-center text-lg font-vt323 text-red-500 self-center">
-          {serverError}
-        </p>
+          <p className="items-center self-center font-vt323 text-lg text-red-500">
+            {serverError}
+          </p>
         )}
         <form
           onSubmit={handleSubmit(onSubmit)}
@@ -91,9 +93,9 @@ function LoginPage() {
                 px-3 py-2 text-sm  text-primary focus:outline-none focus:ring-2 focus:ring-primary"
             />
             {errors.mail && (
-            <p className="text-md font-vt323 text-red-500">
-              {errors.mail.message}
-            </p>
+              <p className="text-md font-vt323 text-red-500">
+                {errors.mail.message}
+              </p>
             )}
           </div>
           <div className="space-y-2">
@@ -138,9 +140,7 @@ function LoginPage() {
             </button>
             <div className="flex h-auto w-full items-center space-x-2">
               <div style={{ height: '2px' }} className=" w-full bg-primary" />
-              <p className="font-vt323 text-primary">
-                {t('or').toUpperCase()}
-              </p>
+              <p className="font-vt323 text-primary">{t('or').toUpperCase()}</p>
               <div style={{ height: '2px' }} className="w-full bg-primary" />
             </div>
             <button

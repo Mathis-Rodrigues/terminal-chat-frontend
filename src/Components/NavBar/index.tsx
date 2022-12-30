@@ -43,14 +43,13 @@ function NavBar() {
           <option value="en">{t('english').toUpperCase()}</option>
           <option value="fr">{t('french').toUpperCase()}</option>
         </select>
-        {userProfile.name
-          && (
+        {userProfile.name && (
           <FontAwesomeIcon
-            className="z-10 cursor-pointer text-xl md:text-2xl text-black"
+            className="z-10 cursor-pointer text-xl text-black md:text-2xl"
             icon={faRightFromBracket}
             onClick={logout}
           />
-          )}
+        )}
       </div>
     </div>
   );

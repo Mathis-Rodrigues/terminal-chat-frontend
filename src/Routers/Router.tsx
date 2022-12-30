@@ -34,7 +34,7 @@ function Router() {
             <ProtectedRoute redirectTo="/">
               <HomePage />
             </ProtectedRoute>
-        )}
+          )}
         />
         <Route
           path="/lobby/:id"
@@ -42,19 +42,16 @@ function Router() {
             <ProtectedRoute redirectTo="/">
               <LobbyPage />
             </ProtectedRoute>
-      )}
+          )}
         />
-        <Route
-          path="/register"
-          element={(<RegisterPage />)}
-        />
+        <Route path="/register" element={<RegisterPage />} />
         <Route
           path="/create-lobby"
           element={(
             <ProtectedRoute redirectTo="/">
               <CreateLobby />
             </ProtectedRoute>
-      )}
+          )}
         />
       </Routes>
     </BrowserRouter>
