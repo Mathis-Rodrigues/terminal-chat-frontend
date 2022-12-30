@@ -16,6 +16,10 @@ function Message({ message }: MessageProps) {
   return (
     <div style={{}}>
       <p className="font-vt323 text-xl text-primary">
+        {message.time}
+        {' '}
+        -
+        {' '}
         {message.customSender === 'room' ? '' : `${user?.name} - `}
         {`${message.message}`}
       </p>

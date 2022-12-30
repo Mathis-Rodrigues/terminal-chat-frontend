@@ -49,7 +49,7 @@ function LobbyPage() {
   return (
     <div className="flex h-full w-full flex-row  justify-center">
       <div className="border-2 border-primary bg-black p-2 h-full">
-        <p className="md:text-2xl text-primary font-vt323 italic text-center">{t('Membres du lobby')}</p>
+        <p className="md:text-2xl text-primary font-vt323 italic text-center">{t('lobbyMembers')}</p>
         {participants.map((p) => (
           <p className="md:text-xl text-sm text-primary text-ellipsis overflow-hidden whitespace-nowrap">
             -

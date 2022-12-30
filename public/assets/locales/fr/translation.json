@@ -20,5 +20,6 @@
     "roomName": "Nom de la salle",
     "roomSubject": "Sujet de la salle",
     "connexionHappenning": "Connexion en cours",
-    "wrongPassword": "Mot de passe incorrect"
+    "wrongPassword": "Mot de passe incorrect",
+    "lobbyMembers": "Membres du lobby"
 }

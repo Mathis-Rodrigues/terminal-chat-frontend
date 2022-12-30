@@ -8,6 +8,7 @@ import { Profile } from '../../Types/Profile';
 function NavBar() {
   const { t } = useTranslation();
   const updateUserProfile = useProfileStore((state) => state.updateUserProfile);
+  const userProfile = useProfileStore((state) => state.userProfile);
 
   const goToHome = () => {
     window.location.href = '/home';
@@ -42,11 +43,14 @@ function NavBar() {
           <option value="en">{t('english').toUpperCase()}</option>
           <option value="fr">{t('french').toUpperCase()}</option>
         </select>
-        <FontAwesomeIcon
-          className="z-10 cursor-pointer text-xl md:text-2xl text-black"
-          icon={faRightFromBracket}
-          onClick={logout}
-        />
+        {userProfile.name
+          && (
+          <FontAwesomeIcon
+            className="z-10 cursor-pointer text-xl md:text-2xl text-black"
+            icon={faRightFromBracket}
+            onClick={logout}
+          />
+          )}
       </div>
     </div>
   );

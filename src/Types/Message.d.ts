@@ -4,4 +4,5 @@ export interface Message {
   to: string;
   privateMessage?: boolean;
   customSender?: string;
+  time?: string;
 }
