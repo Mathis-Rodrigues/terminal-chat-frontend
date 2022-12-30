@@ -29,9 +29,9 @@ function NavBar() {
       <button
         type="button"
         onClick={goToHome}
-        className="cursor-pointer text-4xl text-black md:text-6xl"
+        className="cursor-pointer text-3xl text-black sm:text-4xl md:text-6xl "
       >
-        TERMINAL CHAT
+        Terminal Chat
       </button>
       <div className="flex items-center gap-x-4">
         <select
