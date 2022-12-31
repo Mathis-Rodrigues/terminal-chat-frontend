@@ -53,8 +53,12 @@ function LobbyPage() {
     }
   }, [connected, id]);
 
-  if (!socket) {
-    return <p>{t('connexionHappenning')}</p>;
+  if (!socket || !connected) {
+    return (
+      <div className="flex h-full w-full flex-col items-center">
+        <p className="text-lg text-primary">{t('loading')}</p>
+      </div>
+    );
   }
   return (
     <div className="flex h-full flex-row justify-center">
@@ -76,8 +80,6 @@ function LobbyPage() {
           <ChatBox messages={messages} socket={socket} id={id} />
         </div>
       </div>
-
-      {!connected && <p>{t('connexionHappenning')}</p>}
     </div>
   );
 }
