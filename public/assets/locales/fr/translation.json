@@ -26,5 +26,6 @@
     "userJoined": "a rejoint la salle",
     "loading": "Chargement",
     "enterRoomPassword": "Entrer le mot de passe de la salle",
-    "participants": "Participants"
+    "participants": "Participants",
+    "errorTooLong": "Le champ est trop long"
 }

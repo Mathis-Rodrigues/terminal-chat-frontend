@@ -52,7 +52,10 @@ function CreateLobby() {
                   value: true,
                   message: t('fieldRequired'),
                 },
-                maxLength: 99,
+                maxLength: {
+                  value: 30,
+                  message: t('errorTooLong'),
+                },
               })}
               type="text"
               name="name"
@@ -72,7 +75,10 @@ function CreateLobby() {
             </p>
             <input
               {...register('subject', {
-                maxLength: 99,
+                maxLength: {
+                  value: 80,
+                  message: t('errorTooLong'),
+                },
               })}
               type="text"
               name="subject"

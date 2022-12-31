@@ -26,5 +26,6 @@
     "userJoined": "has joined the room",
     "loading": "Loading",
     "enterRoomPassword": "Enter room password",
-    "participants": "Participants"
+    "participants": "Participants",
+    "errorTooLong": "This field is too long"
 }
