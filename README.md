@@ -16,7 +16,6 @@ It was made using React and Tailwind
 To deploy the project we used [vercel](https://vercel.com)
 But you can use any other hosting service for react based projects.
 
-
 ### Environment variables
 
 The projects needs a few environment variables to work
