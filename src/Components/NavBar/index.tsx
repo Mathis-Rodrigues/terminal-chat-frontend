@@ -20,8 +20,8 @@ function NavBar() {
     updateUserProfile({} as Profile);
   };
 
-  const handleChange = (event: any) => {
-    changeLanguage(event.target.value);
+  const handleChange = async (event: any) => {
+    await changeLanguage(event.target.value);
     window.location.reload();
   };
   return (
@@ -31,7 +31,7 @@ function NavBar() {
         onClick={goToHome}
         className="cursor-pointer text-3xl text-black sm:text-4xl md:text-6xl "
       >
-        Terminal Chat
+        TERMINAL CHAT
       </button>
       <div className="flex items-center gap-x-4">
         <select

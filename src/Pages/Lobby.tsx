@@ -57,22 +57,26 @@ function LobbyPage() {
     return <p>{t('connexionHappenning')}</p>;
   }
   return (
-    <div className="flex h-full w-full flex-row  justify-center">
-      <div className="h-full border-2 border-primary bg-black p-2">
-        <p className="text-center font-vt323 italic text-primary md:text-2xl">
-          {t('lobbyMembers')}
-        </p>
-        {participants.map((p) => (
-          <p className="overflow-hidden text-ellipsis whitespace-nowrap text-sm text-primary md:text-xl">
-            -
-            {' '}
-            {p.user.name.slice(0, 12) + (p.user.name.length > 12 ? '...' : '')}
+    <div className="flex h-full flex-row justify-center">
+      <div className="flex flex-row w-full max-w-2xl shadow-cyber">
+
+        <div className=" h-full border-2 border-primary bg-black p-2 ">
+          <p className="text-center font-vt323 italic text-primary md:text-2xl">
+            {t('lobbyMembers')}
           </p>
-        ))}
+          {participants.map((p) => (
+            <p className="overflow-hidden text-ellipsis whitespace-nowrap text-sm text-primary md:text-xl">
+              -
+              {' '}
+              {p.user.name.slice(0, 12) + (p.user.name.length > 12 ? '...' : '')}
+            </p>
+          ))}
+        </div>
+        <div className="h-auto w-full border-2 border-primary bg-black">
+          <ChatBox messages={messages} socket={socket} id={id} />
+        </div>
       </div>
-      <div className="h-auto w-full max-w-xl border-2 border-primary bg-black shadow-cyber">
-        <ChatBox messages={messages} socket={socket} id={id} />
-      </div>
+
       {!connected && <p>{t('connexionHappenning')}</p>}
     </div>
   );
