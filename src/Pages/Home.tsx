@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowsRotate, faPlus, faRotateRight } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faRotateRight } from '@fortawesome/free-solid-svg-icons';
 import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -7,15 +7,14 @@ import { useNavigate } from 'react-router-dom';
 import useToken from '../Hooks/useToken';
 import Rooms from '../Services/Rooms';
 import './Home.css';
+import Popup from '../Components/Popup';
 
 function HomePage() {
   useToken();
   const { t } = useTranslation();
   const navigate = useNavigate();
-
-  const [passwordInput, setPasswordInput] = useState('');
-  const [enableInput, setEnableInput] = useState(false);
   const [selectedRoomId, setSelectedRoomId] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const {
     data: rooms,
@@ -31,11 +30,11 @@ function HomePage() {
   };
 
   const onProtectedLobbyClick = (selected: string) => {
-    setEnableInput(true);
+    setIsModalOpen(true);
     setSelectedRoomId(selected);
   };
 
-  const onPasswordSubmit = () => {
+  const onPasswordSubmit = (passwordInput: string) => {
     if (passwordInput === '') return;
     const room = rooms?.find((r) => r._id === selectedRoomId);
     if (room === undefined) return;
@@ -46,7 +45,7 @@ function HomePage() {
         }
       })
       .catch(() => {
-        setPasswordInput(t('wrongPassword') || '');
+        setIsModalOpen(false);
       });
   };
 
@@ -67,10 +66,6 @@ function HomePage() {
 
   return (
     <div className="flex h-full w-full flex-col items-center">
-      {/* <button type="button" className="mt-3" onClick={() => refetch()}>
-        <p className="font-vt323 text-xl text-primary">{t('reload')}</p>
-      </button> */}
-
       <div className="flex w-full max-w-xl items-center justify-between">
         <button type="button" className=" hover:bg-primary hover:text-black text-primary rounded-md my-2 px-4 flex items-center gap-2 border-2 border-primary" onClick={onCreateRoomClick}>
           <p className="text-right font-vt323 md:text-xl text-md ">
@@ -121,24 +116,11 @@ function HomePage() {
           </div>
         ))}
       </div>
-      {enableInput && (
-        <div className="flex w-full max-w-xl flex-col">
-          <input
-            placeholder="Enter room password"
-            className="w-full max-w-xl bg-black px-2 py-2 font-vt323
-              text-xl text-primary focus:outline-none"
-            onChange={(e) => setPasswordInput(e.target.value)}
-          />
-          <button
-            type="button"
-            className="mt-3"
-            onClick={() => onPasswordSubmit()}
-          >
-            <p className="font-vt323 text-xl text-primary">{t('join')}</p>
-          </button>
-        </div>
-      )}
-
+      <Popup
+        isOpen={isModalOpen}
+        setIsOpen={setIsModalOpen}
+        onPasswordSubmit={onPasswordSubmit}
+      />
     </div>
   );
 }
