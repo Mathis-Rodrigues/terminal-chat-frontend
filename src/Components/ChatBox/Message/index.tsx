@@ -17,9 +17,10 @@ function Message({ message }: MessageProps) {
 
   const formatTime = (time: string) => {
     const date = new Date(time);
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
-    return `${hours}:${minutes}`;
+    const hours = `0${date.getHours()}`.slice(-2);
+    const minutes = `0${date.getMinutes()}`.slice(-2);
+    const formattedTime = `${hours}:${minutes}`;
+    return formattedTime;
   };
 
   return (
