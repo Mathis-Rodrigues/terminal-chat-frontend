@@ -1,5 +1,3 @@
-import { faClose } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Modal } from 'react-overlays';
@@ -16,43 +14,35 @@ function Popup({ isOpen, setIsOpen, onPasswordSubmit }: PopupProps) {
 
   return (
     <div
-      tabIndex={0}
+      tabIndex={-1}
       role="button"
       onKeyDown={() => {}}
       onClick={(event) => {
-        if ((event.target as HTMLElement).id === 'modal') {
+        if ((event.target as HTMLElement).id === 'backdrop') {
           setIsOpen(false);
         }
       }}
     >
       <Modal
-        id="modal"
+        id="backdrop"
         show={isOpen}
         onHide={() => setIsOpen(false)}
         onExit={() => setIsOpen(false)}
         className="fixed top-0 left-0 right-0 bottom-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
       >
-        <div className="relative rounded-md border-2 border-primary bg-black p-5 lg:w-1/3 w-1/2">
-          <FontAwesomeIcon
-            className="absolute top-2 right-2 z-10 cursor-pointer text-primary md:text-xl"
-            icon={faClose}
-            onClick={() => setIsOpen(false)}
-          />
+        <div className="relative rounded-md border-2 border-primary bg-black lg:w-1/3 w-1/2">
           <input
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                onPasswordSubmit(passwordInput);
+              }
+            }}
+            tabIndex={0}
             placeholder={t('enterRoomPassword')}
             className="w-full max-w-xl rounded-md bg-black px-2 py-2
-              font-vt323 text-xl text-primary focus:outline-none"
+              font-vt323 text-xl text-primary focus:outline-none placeholder:text-primary "
             onChange={(e) => setPasswordInput(e.target.value)}
           />
-          <div className="flex items-center justify-center ">
-            <button
-              type="button"
-              className="mt-3 font-vt323 text-xl text-primary"
-              onClick={() => onPasswordSubmit(passwordInput)}
-            >
-              {t('join')}
-            </button>
-          </div>
         </div>
       </Modal>
     </div>
