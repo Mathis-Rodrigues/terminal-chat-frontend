@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowsRotate, faPlus, faRotateRight } from '@fortawesome/free-solid-svg-icons';
 import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -65,11 +67,27 @@ function HomePage() {
 
   return (
     <div className="flex h-full w-full flex-col items-center">
-      <button type="button" className="my-3" onClick={onCreateRoomClick}>
-        <p className="text-right font-vt323 text-xl text-primary">
-          {t('createRoom')}
-        </p>
-      </button>
+      {/* <button type="button" className="mt-3" onClick={() => refetch()}>
+        <p className="font-vt323 text-xl text-primary">{t('reload')}</p>
+      </button> */}
+
+      <div className="flex w-full max-w-xl items-center justify-between">
+        <button type="button" className=" hover:bg-primary hover:text-black text-primary rounded-md my-2 px-4 flex items-center gap-2 border-2 border-primary" onClick={onCreateRoomClick}>
+          <p className="text-right font-vt323 md:text-xl text-md ">
+            {t('createRoom')}
+          </p>
+          <FontAwesomeIcon
+            className="z-10 cursor-pointer md:text-xl "
+            icon={faPlus}
+            onClick={() => refetch()}
+          />
+        </button>
+        <FontAwesomeIcon
+          className="z-10 cursor-pointer text-primary  md:text-2xl hover:text-yellow-600"
+          icon={faRotateRight}
+          onClick={() => refetch()}
+        />
+      </div>
       <div className="mostly-customized-scrollbar h-[80%] w-full max-w-xl overflow-auto border-2 border-primary bg-black shadow-cyber ">
         {rooms.length === 0 && (
           <p className="font-vt323 text-xl text-primary">{t('noRooms')}</p>
@@ -120,9 +138,7 @@ function HomePage() {
           </button>
         </div>
       )}
-      <button type="button" className="mt-3" onClick={() => refetch()}>
-        <p className="font-vt323 text-xl text-primary">{t('reload')}</p>
-      </button>
+
     </div>
   );
 }
