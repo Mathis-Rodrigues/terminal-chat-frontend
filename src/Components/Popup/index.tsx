@@ -1,6 +1,3 @@
-/* eslint-disable react/jsx-boolean-value */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { faClose } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
@@ -33,7 +30,7 @@ function Popup({ isOpen, setIsOpen, onPasswordSubmit }: PopupProps) {
           onClick={() => setIsOpen(false)}
         />
         <input
-          placeholder="Enter room password"
+          placeholder={t('enterRoomPassword')}
           className="w-full max-w-xl bg-black px-2 py-2 font-vt323
               text-xl text-primary focus:outline-none rounded-md"
           onChange={(e) => setPasswordInput(e.target.value)}

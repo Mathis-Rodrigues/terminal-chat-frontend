@@ -24,5 +24,7 @@
     "lobbyMembers": "Membres du lobby",
     "userLeft": "a quitté la salle",
     "userJoined": "a rejoint la salle",
-    "loading": "Chargement"
+    "loading": "Chargement",
+    "enterRoomPassword": "Entrer le mot de passe de la salle",
+    "participants": "Participants"
 }

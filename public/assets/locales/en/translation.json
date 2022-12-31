@@ -24,5 +24,7 @@
     "lobbyMembers": "Lobby members",
     "userLeft": "has left the room",
     "userJoined": "has joined the room",
-    "loading": "Loading"
+    "loading": "Loading",
+    "enterRoomPassword": "Enter room password",
+    "participants": "Participants"
 }

@@ -67,8 +67,12 @@ function HomePage() {
   return (
     <div className="flex h-full w-full flex-col items-center">
       <div className="flex w-full max-w-xl items-center justify-between">
-        <button type="button" className=" hover:bg-primary hover:text-black text-primary rounded-md my-2 px-4 flex items-center gap-2 border-2 border-primary" onClick={onCreateRoomClick}>
-          <p className="text-right font-vt323 md:text-xl text-md ">
+        <button
+          type="button"
+          className=" my-2 flex items-center gap-2 rounded-md border-2 border-primary px-4 text-primary hover:bg-primary hover:text-black"
+          onClick={onCreateRoomClick}
+        >
+          <p className="text-md text-right font-vt323 md:text-xl ">
             {t('createRoom')}
           </p>
           <FontAwesomeIcon
@@ -78,7 +82,7 @@ function HomePage() {
           />
         </button>
         <FontAwesomeIcon
-          className="z-10 cursor-pointer text-primary  md:text-2xl hover:text-yellow-600"
+          className="z-10 cursor-pointer text-primary  hover:text-yellow-600 md:text-2xl"
           icon={faRotateRight}
           onClick={() => refetch()}
         />
@@ -101,12 +105,12 @@ function HomePage() {
             key={room._id}
             role="button"
             className="flex w-full cursor-pointer flex-col justify-between border-2
-          border-primary p-8 text-primary shadow-cyber hover:bg-primary hover:text-black"
+          border-primary p-5 text-primary shadow-cyber hover:bg-primary hover:text-black"
           >
-            <p className="font-vt323 text-xl">{room.name}</p>
-            <p className="font-vt323 text-xl">{room.subject}</p>
-            <p className="font-vt323 text-xl">
-              {`${room.participants.length} - Participants`}
+            <p className="font-vt323 md:text-3xl text-2xl">{room.name}</p>
+            <p className="font-vt323 md:text-xl text-md italic">{room.subject}</p>
+            <p className="font-vt323 md:text-xl text-md">
+              {`${room.participants.length} ${t('participants')}`}
             </p>
             <div className="flex justify-end">
               <p className=" font-vt323 text-xl">
