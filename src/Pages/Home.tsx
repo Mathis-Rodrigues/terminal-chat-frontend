@@ -87,7 +87,7 @@ function HomePage() {
           onClick={() => refetch()}
         />
       </div>
-      <div className="mostly-customized-scrollbar h-[80%] w-full max-w-xl overflow-auto border-2 border-primary bg-black shadow-cyber ">
+      <div className="mostly-customized-scrollbar h-[80%] w-full max-w-xl overflow-y-scroll border-2 border-primary bg-black shadow-cyber">
         {rooms.length === 0 && (
           <p className="font-vt323 text-xl text-primary">{t('noRooms')}</p>
         )}
