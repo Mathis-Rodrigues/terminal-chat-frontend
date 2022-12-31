@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faRotateRight } from '@fortawesome/free-solid-svg-icons';
+import { faLock, faPlus, faRotateRight } from '@fortawesome/free-solid-svg-icons';
 import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -107,7 +107,14 @@ function HomePage() {
             className="flex w-full cursor-pointer flex-col justify-between border-2
           border-primary p-5 text-primary shadow-cyber hover:bg-primary hover:text-black"
           >
-            <p className="font-vt323 md:text-3xl text-2xl">{room.name}</p>
+            <div className="flex justify-between items-center">
+
+              <p className="font-vt323 md:text-3xl text-2xl">{room.name}</p>
+              <FontAwesomeIcon
+                className={`${room?.protected ? '' : 'hidden'} md:text-xl`}
+                icon={faLock}
+              />
+            </div>
             <p className="font-vt323 md:text-xl text-md italic">{room.subject}</p>
             <p className="font-vt323 md:text-xl text-md">
               {`${room.participants.length} ${t('participants')}`}
