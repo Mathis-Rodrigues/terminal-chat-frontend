@@ -1,6 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { faClose } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
@@ -19,6 +16,9 @@ function Popup({ isOpen, setIsOpen, onPasswordSubmit }: PopupProps) {
 
   return (
     <div
+      tabIndex={0}
+      role="button"
+      onKeyDown={() => {}}
       onClick={(event) => {
         if ((event.target as HTMLElement).id === 'modal') {
           setIsOpen(false);
