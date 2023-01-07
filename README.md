@@ -3,6 +3,8 @@
 This is the Frontend for our project Terminal Chat \
 It was made using React and Tailwind
 
+If you want to see it go to: https://terminal-chat-frontend.vercel.app/
+
 ## Commands
 
 - npm build = Builds the app for production to the build folder 
